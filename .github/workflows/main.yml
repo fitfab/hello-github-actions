@@ -1,12 +1,23 @@
 name: A workflow for my Hello World file
 on: push
 
+# jobs: is the base component of a workflow run
 jobs:
+  # build: is the identifier we're attaching to this job
   build:
+    # name: is the name of the job, this is displayed on GitHub when the workflow is running
     name: Hello world action
     runs-on: ubuntu-latest
+    # steps: the linear sequence of operations that make up a job
     steps:
+      # uses: actions/checkout@master uses an action called checkout to
+      # use a copy of our code repository
       - uses: actions/checkout@master
+      # uses: ./action-a uses an action named action-a by referencing
+      # the path to the action's directory, relative to our repository
       - uses: ./action-a
+        # env: is used to specify the environment variables that will be available to
+        # your action in the runtime environment. In this case, the environment variable is MY_NAME,
+        # and it is currently initialized to "Mona".
         env:
           MY_NAME: "Mona"
